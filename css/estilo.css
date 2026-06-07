@@ -1,0 +1,912 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BÁSICA
+   ========================================================================== */
+:root {
+    --color-dark: #0a0a0a;       
+    --color-light: #ffffff;      
+    --color-cream: #f9f6f0;      
+    --color-gold: #d4af37;       
+    --color-gold-hover: #f3e5ab; 
+    --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-dark);
+    color: var(--color-cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Fondo de computadoras premium (Estética Minimalista y Profesional) */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Filtro degradado premium que suaviza la imagen para máxima legibilidad */
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.82) 0%, rgba(15, 15, 15, 0.92) 100%), 
+                url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    z-index: -1;
+}
+
+
+/* ==========================================================================
+   2. ANIMACIÓN FADE-IN
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (DESKTOP)
+   ========================================================================== */
+.header {
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    position: relative;
+}
+
+/* Forzar logo al centro en pantallas grandes */
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-logo a {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-light);
+    text-decoration: none;
+    letter-spacing: 4px;
+}
+
+.nav-logo .gold-dot {
+    color: var(--color-gold);
+}
+
+/* Opciones alineadas a la derecha */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    margin-left: auto; 
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-cream);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s, border-color 0.3s;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--color-gold-hover);
+}
+
+.nav-link.active {
+    color: var(--color-gold);
+    border-bottom: 2px solid var(--color-gold);
+}
+
+.hamburger {
+    display: none; 
+    background: none;
+    border: none;
+    color: var(--color-cream);
+    font-size: 1.6rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* ==========================================================================
+   4. DISEÑO RESPONSIVO (MÓVILES)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .nav-logo {
+        position: static;
+        transform: none;
+    }
+
+    .hamburger {
+        display: block; 
+    }
+
+    /* Menú lateral responsivo */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; 
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(10, 10, 10, 0.98);
+        border-left: 1px solid rgba(212, 175, 55, 0.2);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1); 
+        margin-left: 0;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   5. CONTENIDO HERO
+   ========================================================================== */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 0 1.5rem;
+}
+
+.hero-content h1 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--color-light);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: var(--color-cream);
+    opacity: 0.8;
+}
+
+.text-gold {
+    color: var(--color-gold);
+    font-weight: 600;
+}
+/* ==========================================================================
+   6. SECCIÓN DE SERVICIOS (GRID Y TARJETAS)
+   ========================================================================== */
+.services-section {
+    padding: 5rem 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    width: 100%;
+}
+
+/* Título con <br> estilizado */
+.section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: 3px;
+    color: var(--color-light);
+    margin-bottom: 3.5rem;
+    text-transform: uppercase;
+    position: relative;
+}
+
+
+
+/* Configuración del Grid (4 columnas por 1 fila en Desktop) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Tarjeta Interactiva Estilo Premium */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: rgba(10, 10, 10, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px; /* Bordes redondeados modernos */
+    padding: 2.5rem 2rem;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    
+    /* Sombra moderna y sutil */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    /* Animación suave base */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo brillante al pasar el mouse (Hover) */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(214, 175, 55, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Estilos del Icono */
+.card-icon {
+    font-size: 2.2rem;
+    color: var(--color-cream);
+    margin-bottom: 2rem;
+    transition: transform 0.4s ease, color 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* Estilos del Texto */
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--color-light);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+}
+
+/* Flecha decorativa inferior */
+.card-arrow {
+    font-size: 0.9rem;
+    color: rgba(249, 246, 240, 0.3);
+    align-self: flex-end;
+    transition: transform 0.4s ease, color 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   7. EFECTOS HOVER COMPLEJOS Y ANIMACIONES
+   ========================================================================== */
+.card:hover {
+    transform: translateY(-8px); /* Elevación suave */
+    border-color: rgba(212, 175, 55, 0.5); /* El borde se ilumina en dorado */
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15); /* Sombra con destello dorado */
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover .card-icon {
+    color: var(--color-gold); /* El icono cambia a dorado */
+    transform: scale(1.1); /* Crece sutilmente */
+}
+
+.card:hover .card-title {
+    color: var(--color-gold-hover);
+}
+
+.card:hover .card-arrow {
+    color: var(--color-gold);
+    transform: translateX(4px); /* La flecha se mueve a la derecha */
+}
+
+/* ==========================================================================
+   8. ADAPTABILIDAD PARA CELULAR (RESPONSIVE)
+   ========================================================================== */
+@media screen and (max-width: 992px) {
+    /* En tablets medianas cambia a 2 columnas */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .services-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    /* En celulares se vuelve una sola columna vertical */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    .section-title {
+        margin-bottom: 2.5rem;
+    }
+}
+/* ==========================================================================
+   9. PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+.footer-section {
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.95);
+    border-top: 1px solid rgba(212, 175, 55, 0.2); /* Línea dorada superior sutil */
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Marca / Créditos */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-light);
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+
+.footer-logo .gold-dot {
+    color: var(--color-gold);
+}
+
+.footer-credits {
+    font-size: 0.85rem;
+    color: var(--color-cream);
+    opacity: 0.6;
+    letter-spacing: 0.5px;
+}
+
+/* Redes Sociales */
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%; /* Iconos perfectamente circulares */
+    color: var(--color-cream);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Efecto hover en las redes sociales */
+.social-link:hover {
+    color: var(--color-dark);
+    background-color: var(--color-gold); /* El círculo se llena de dorado */
+    border-color: var(--color-gold);
+    transform: translateY(-4px); /* Pequeño salto hacia arriba */
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Botón Volver Arriba */
+.scroll-top-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    color: var(--color-cream);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 30px; /* Bordes totalmente redondeados tipo píldora */
+    transition: all 0.3s ease;
+}
+
+.scroll-top-btn i {
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover en el botón de subir */
+.scroll-top-btn:hover {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+    background-color: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+}
+
+.scroll-top-btn:hover i {
+    transform: translateY(-3px); /* La flecha se mueve hacia arriba apuntando al destino */
+}
+
+/* ==========================================================================
+   10. RESPONSIVE PARA EL FOOTER (MÓVILES)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Cambia a disposición vertical en celulares */
+        text-align: center;
+        gap: 2.5rem;
+        padding: 1rem 0;
+    }
+
+    .footer-brand {
+        order: 2; /* Reorganiza para que los créditos queden abajo en móvil */
+    }
+
+    .footer-socials {
+        order: 1;
+    }
+
+    .footer-back-to-top {
+        order: 3;
+    }
+}
+/* ==========================================================================
+   4. REDISEÑO EXCLUSIVO POR CSS: HORIZONTAL Y MINÚSCULAS
+   ========================================================================== */
+.editorial-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 10;
+    /* Forzar absolutamente todo el texto a minúsculas */
+    text-transform: lowercase !important; 
+}
+
+/* Cambiamos el contenedor principal a una sola columna vertical para apilar el título arriba */
+.editorial-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* --- BLOQUE DEL TÍTULO --- */
+.editorial-title-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.editorial-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--color-light);
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.editorial-line {
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-gold);
+    transition: width 0.4s ease;
+}
+
+.editorial-title-box:hover .editorial-line {
+    width: 80px;
+}
+
+/* --- BLOQUE DE CONTENIDO --- */
+.editorial-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.editorial-lead {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-cream);
+    font-weight: 400;
+    max-width: 900px;
+}
+
+/* Quitamos márgenes innecesarios del párrafo puente */
+.editorial-body-text > p {
+    font-size: 1rem;
+    color: var(--color-cream);
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+}
+
+/* --- TRANSFORMACIÓN DE LA LISTA A FILA HORIZONTAL --- */
+.purpose-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* Convertimos la lista en un Grid Horizontal de 4 columnas */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.purpose-list li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-cream);
+    opacity: 0.8;
+    font-weight: 300;
+    padding-left: 0; /* Eliminamos el espacio de la viñeta anterior */
+    /* Creamos una línea superior minimalista sobre cada pilar */
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding-top: 1rem;
+    transition: border-top-color 0.4s ease;
+}
+
+/* Quitamos el punto/cuadrado viejo de la viñeta */
+.purpose-list li::before {
+    display: none !important;
+}
+
+/* Convertimos el tag strong (el nombre de la tarjeta) en un encabezado propio */
+.purpose-list strong {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--color-gold);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
+}
+
+/* Efecto interactivo al pasar el mouse sobre cada pilar */
+.purpose-list li:hover {
+    border-top-color: var(--color-gold);
+}
+
+/* ==========================================================================
+   4.1 OPTIMIZACIÓN RESPONSIVA (MÓVILES Y TABLETS)
+   ========================================================================== */
+@media screen and (max-width: 968px) {
+    /* En tablets cambia a diseño 2x2 para mantener la legibilidad */
+    .purpose-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .editorial-section {
+        padding: 4rem 1.5rem;
+    }
+
+    /* En celulares se apilan verticalmente de forma fluida */
+    .purpose-list {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+}
+/* ==========================================================================
+   4. SECCIÓN: ESENCIA TÉCNICA (TARJETAS MINIMALISTAS NUMERADAS)
+   ========================================================================== */
+.essense-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    position: relative;
+    z-index: 10;
+    /* regla maestra: todo estrictamente en minúsculas */
+    text-transform: lowercase !important;
+}
+
+.essense-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* Texto introductorio centrado y elegante */
+.essense-lead {
+    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+    line-height: 1.7;
+    color: #e5e5e0; /* tono crema premium */
+    text-align: center;
+    max-width: 950px;
+    font-weight: 300;
+    letter-spacing: -0.2px;
+}
+
+/* Grilla estrictamente horizontal para las 4 tarjetas */
+.essense-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Estilo exacto de las tarjetas con bordes redondeados y sutiles */
+.essense-card {
+    background-color: rgba(18, 18, 18, 0.4); /* fondo oscuro semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* borde sutil */
+    border-radius: 12px;
+    padding: 2.2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efecto hover premium */
+.essense-card:hover {
+    background-color: rgba(22, 22, 22, 0.8);
+    border-color: rgba(212, 175, 55, 0.4); /* destello dorado sutil en el borde */
+    transform: translateY(-5px);
+}
+
+/* Número de la tarjeta en dorado */
+.card-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #d4af37; /* color dorado de tu marca */
+    margin-bottom: 0.5rem;
+    font-family: serif, var(--font-primary); /* toque estético de transición */
+}
+
+/* Título del pilar técnico */
+.card-pilar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* Descripción interna del pilar */
+.card-pilar-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e5e5e0;
+    opacity: 0.7; /* texto suavizado para excelente contraste */
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   4.1 RESPONSIVIDAD ADAPTATIVA (CELULARES Y TABLETS)
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+    /* En tablets se reacomoda en un cómodo diseño de 2x2 */
+    .essense-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .essense-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .essense-container {
+        gap: 2.5rem;
+    }
+
+    /* En celulares adopta una sola columna vertical fluida */
+    .essense-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .essense-card {
+        padding: 2rem 1.5rem;
+    }
+}
+/* ==========================================================================
+   5. SECCIÓN DE INSTRUCTIVOS (DISEÑO HORIZONTAL CON IMÁGENES)
+   ========================================================================== */
+.details-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.details-row {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr; /* distribución del espacio horizontal */
+    gap: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 4rem;
+    scroll-margin-top: 120px; 
+    transition: var(--transition-smooth);
+}
+
+.details-row:target {
+    border-top-color: var(--color-gold);
+}
+
+/* columna izquierda: textos superiores e imágenes */
+.details-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.details-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    font-family: serif, var(--font-primary);
+}
+
+.details-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-light);
+    letter-spacing: -0.5px;
+}
+
+.details-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-cream);
+    opacity: 0.5;
+    font-weight: 300;
+    margin-bottom: 1.5rem; /* espacio para la imagen inferior */
+}
+
+/* contenedor estético para las imágenes */
+.details-image-box {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--color-card-bg);
+}
+
+.details-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* corta y adapta la imagen sin deformarla */
+    opacity: 0.6; /* tono apagado luxury */
+    filter: grayscale(40%); /* sutil desaturación para integrarse al diseño oscuro */
+    transition: var(--transition-smooth);
+}
+
+/* efectos visuales al pasar el cursor sobre el instructivo */
+.details-row:hover .details-image-box img {
+    opacity: 0.8;
+    filter: grayscale(0%);
+    transform: scale(1.04);
+}
+
+/* columna derecha: lista de pasos ordenados */
+.instructions-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.instructions-steps li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-cream);
+    opacity: 0.8;
+    font-weight: 300;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.step-num {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    padding-top: 0.2rem;
+}
+
+/* ==========================================================================
+   5.1 ADAPTABILIDAD DE IMÁGENES EN MÓVILES
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+    .details-row {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-top: 3rem;
+    }
+
+    .details-image-box {
+        height: 250px; /* un poco más altas en formatos tipo tablet */
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .instructions-steps li {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    
+    .step-num {
+        padding-top: 0;
+    }
+
+    .details-image-box {
+        height: 180px;
+    }
+}
