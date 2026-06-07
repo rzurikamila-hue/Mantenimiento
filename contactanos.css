@@ -1,0 +1,246 @@
+/* ==========================================================================
+   DISEÑO DE LA SECCIÓN DE CONTACTO (ALINEACIÓN ENMEDIO)
+   ========================================================================== */
+.contact-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem; /* padding uniforme equilibrado */
+    min-height: 100vh; /* fuerza a la sección a abarcar toda la altura de la pantalla */
+    display: flex;
+    align-items: center; /* centra verticalmente todo el contenido enmedio */
+    justify-content: center; /* centra horizontalmente */
+    position: relative;
+    z-index: 10;
+    scroll-margin-top: 90px;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 6rem;
+    width: 100%;
+    align-items: center; /* asegura que las dos columnas internas estén parejas enmedio */
+}
+
+/* --- CANALES DE INFORMACIÓN (COLUMNA IZQUIERDA) --- */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact-subtitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+}
+
+.contact-title {
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-light);
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+}
+
+.contact-line {
+    width: 50px;
+    height: 1px;
+    background-color: var(--color-gold);
+    margin-bottom: 2rem;
+}
+
+.contact-lead {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--color-cream);
+    opacity: 0.8;
+    margin-bottom: 3rem;
+}
+
+.info-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.channel-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.channel-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-gold);
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.channel-item:hover .channel-icon {
+    background-color: var(--color-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    transform: scale(1.05);
+}
+
+.channel-details h3 {
+    font-size: 0.82rem;
+    color: var(--color-light);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+    opacity: 0.5;
+}
+
+.channel-details p {
+    font-size: 1.05rem;
+    color: var(--color-cream);
+    font-weight: 400;
+}
+
+/* --- MAQUETACIÓN DEL FORMULARIO DE ENTRADA (COLUMNA DERECHA) --- */
+.contact-form-box {
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 3rem;
+    backdrop-filter: blur(8px);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-light);
+    letter-spacing: 1px;
+    opacity: 0.6;
+    padding-left: 2px;
+}
+
+.form-input {
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    color: var(--color-light);
+    font-family: var(--font-primary), sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.form-input::placeholder {
+    color: var(--color-cream);
+    opacity: 0.25;
+}
+
+.form-input:focus {
+    border-color: var(--color-gold);
+    background-color: rgba(18, 18, 18, 0.9);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.05);
+}
+
+.form-textarea {
+    height: 140px;
+    resize: none;
+    line-height: 1.6;
+}
+
+.select-custom {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d4af37'><polygon points='0,0 12,0 6,8'/></svg>");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+}
+
+.select-custom option {
+    background-color: var(--color-card-bg);
+    color: var(--color-cream);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--color-gold);
+    border-radius: 8px;
+    padding: 1.1rem;
+    color: var(--color-gold);
+    font-family: var(--font-primary), sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition-smooth);
+    margin-top: 0.5rem;
+}
+
+.btn-submit i {
+    font-size: 0.85rem;
+    transition: var(--transition-smooth);
+}
+
+.btn-submit:hover {
+    background-color: var(--color-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+}
+
+.btn-submit:hover i {
+    transform: translateX(5px);
+}
+
+/* ==========================================================================
+   RESPONSIVIDAD DISPOSITIVOS MÓVILES
+   ========================================================================== */
+@media screen and (max-width: 968px) {
+    .contact-section {
+        padding: 10rem 1.5rem 6rem 1.5rem; /* holgura superior para el menú móvil */
+        align-items: flex-start; /* quita el centrado vertical estricto en pantallas chicas */
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .contact-form-box {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-lead {
+        margin-bottom: 2rem;
+    }
+}

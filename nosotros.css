@@ -1,0 +1,321 @@
+/* ==========================================================================
+   1. VARIABLES Y REGLAS MAESTRAS
+   ========================================================================== */
+:root {
+    --bg-dark: #0a0a0a;
+    --color-light: #ffffff;
+    --color-cream: #e5e5e0;
+    --color-gold: #d4af37;
+    --color-card-bg: #121212;
+    --font-primary: 'Plus Jakarta Sans', sans-serif;
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-dark);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: lowercase !important;
+}
+
+body {
+    color: var(--color-cream);
+    font-family: var(--font-primary), sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--bg-dark);
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   2. CABECERA (BASADO EXACTAMENTE EN IMAGE_1329E9.PNG)
+   ========================================================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    z-index: 100;
+    padding: 1.2rem 2rem;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-light);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.nav-logo a {
+    text-decoration: none;
+    color: var(--color-light);
+    letter-spacing: -0.5px;
+}
+
+.gold-dot {
+    color: var(--color-gold);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    transition: var(--transition-smooth);
+    padding-bottom: 4px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    opacity: 1;
+    color: var(--color-gold);
+}
+
+.nav-link.active {
+    border-bottom: 2px solid var(--color-gold);
+}
+
+/* ==========================================================================
+   3. ARQUITECTURA DE LA SECCIÓN DE INFORMACIÓN Y CONTENEDOR
+   ========================================================================== */
+.about-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12rem 2rem 8rem 2rem;
+    position: relative;
+    z-index: 10;
+    scroll-margin-top: 90px;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1.2fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+/* ==========================================================================
+   4. INGENIERÍA DEL SLIDER (PURE CSS - SIN JAVASCRIPT)
+   ========================================================================== */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--color-card-bg);
+}
+
+.slides-container {
+    display: flex;
+    width: 300%; /* multiplica por la cantidad de imágenes (3 x 100%) */
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-item {
+    width: 33.333%; /* divide el total de la caja entre las imágenes */
+    height: 100%;
+}
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    filter: grayscale(50%) contrast(105%);
+}
+
+/* LÓGICA DE TRASLACIÓN MEDIANTE SELECTORES DE PROXIMIDAD DE CSS */
+#slide-1:checked ~ .slides-container {
+    transform: translateX(0%);
+}
+
+#slide-2:checked ~ .slides-container {
+    transform: translateX(-33.333%);
+}
+
+#slide-3:checked ~ .slides-container {
+    transform: translateX(-66.666%);
+}
+
+/* puntos de control táctiles del slider */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 20;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* iluminación dinámica del punto activo según el input seleccionado */
+#slide-1:checked ~ .slider-dots label:nth-child(1),
+#slide-2:checked ~ .slider-dots label:nth-child(2),
+#slide-3:checked ~ .slider-dots label:nth-child(3) {
+    background-color: var(--color-gold);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* ==========================================================================
+   5. DETALLES INFORMATIVOS (COLUMNA DERECHA)
+   ========================================================================== */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about-subtitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+}
+
+.about-title {
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-light);
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+}
+
+.text-gold {
+    color: var(--color-gold);
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.about-line {
+    width: 50px;
+    height: 1px;
+    background-color: var(--color-gold);
+    margin-bottom: 2rem;
+}
+
+.about-lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--color-cream);
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    opacity: 0.9;
+}
+
+.about-body {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--color-cream);
+    opacity: 0.6;
+    font-weight: 300;
+    text-align: justify;
+}
+
+/* ==========================================================================
+   6. ANIMACIONES Y RESPONSIVIDAD MÓVIL
+   ========================================================================== */
+.animate-fade-in {
+    animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .slider-wrapper {
+        height: 320px;
+        order: 2; /* pasa el slider abajo del texto explicativo en móviles */
+    }
+
+    .about-content {
+        order: 1;
+    }
+
+    .about-body {
+        text-align: left;
+    }
+}

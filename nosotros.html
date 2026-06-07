@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nosotros.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <!-- biblioteca de iconos font awesome oficiales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>nosotros | techcare</title>
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <!-- Barra de Navegación (Estructura idéntica a image_1329e9.png) -->
+    <header class="header animate-fade-in">
+        <nav class="navbar">
+            
+            <!-- Botón Hamburguesa (Solo visible en móviles) -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Logo (Centrado en desktop) -->
+            <div class="nav-logo">
+                <a href="#">TechCare<span class="gold-dot">.</span></a>
+            </div>
+
+            <!-- Opciones del Menú -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#nosotros-identidad" class="nav-link active">Nosotros</a></li>
+                <li><a href="Contactanos.html" class="nav-link">Contáctanos</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- SECCIÓN: NOSOTROS (CON SLIDER INTEGRADO E INFORMACIÓN) -->
+    <section class="about-section animate-fade-in" id="nosotros-identidad">
+        <div class="about-container">
+            
+            <!-- COLUMNA IZQUIERDA: SLIDER DE IMÁGENES REALES PURE CSS -->
+            <div class="slider-wrapper">
+                <!-- controladores internos ocultos -->
+                <input type="radio" name="slider-control" id="slide-1" checked hidden>
+                <input type="radio" name="slider-control" id="slide-2" hidden>
+                <input type="radio" name="slider-control" id="slide-3" hidden>
+
+                <!-- contenedor de las láminas -->
+                <div class="slides-container">
+                    <div class="slide-item">
+                        <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop" alt="infraestructura técnica">
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop" alt="laboratorio de hardware">
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop" alt="monitoreo de sistemas ciberseguridad">
+                    </div>
+                </div>
+
+                <!-- puntos de navegación inferiores estilizados -->
+                <div class="slider-dots">
+                    <label for="slide-1" class="dot"></label>
+                    <label for="slide-2" class="dot"></label>
+                    <label for="slide-3" class="dot"></label>
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: INFORMACIÓN DETALLADA SOBRE LA PÁGINA -->
+            <div class="about-content">
+                <span class="about-subtitle">nuestra esencia</span>
+                <h2 class="about-title">diseño técnico <br> con un estándar <span class="text-gold font-light">impecable</span></h2>
+                <div class="about-line"></div>
+                
+                <p class="about-lead">
+                    no solo gestionamos infraestructura digital; esculpimos soluciones tecnológicas a la medida de los entornos más exigentes. nacimos con el firme propósito de fusionar la ingeniería de vanguardia con una estética limpia, silenciosa y altamente funcional.
+                </p>
+                
+                <p class="about-body">
+                    creemos que el rendimiento óptimo de un sistema no debe estar peleado con la elegancia. desde la calibración milimétrica de un componente físico hasta la depuración de la última línea de código, cada intervención se ejecuta bajo un estricto protocolo de precisión, confidencialidad y exclusividad técnica.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+<footer class="footer-section animate-fade-in">
+    <div class="footer-container">
+        
+        <!-- Contenedor del Logo / Créditos -->
+        <div class="footer-brand">
+            <a href="#" class="footer-logo">TechCare<span class="gold-dot">.</span></a>
+            <p class="footer-credits">&copy; 2026 Todos los derechos reservados.</p>
+        </div>
+
+        <!-- Iconos de Redes Sociales -->
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com" target="_blank" class="social-link" aria-label="X (Twitter)">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+
+        <!-- Botón para Volver Arriba (Enlace interno al inicio de la página) -->
+        <div class="footer-back-to-top">
+            <a href="#" class="scroll-top-btn" aria-label="Volver arriba">
+                <span class="btn-text">Volver arriba</span>
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+
+    </div>
+</footer>
+</html>

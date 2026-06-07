@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Estético Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/estilo.css".css">
+    <!-- Iconos para el botón de hamburguesa -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <!-- Barra de Navegación -->
+    <header class="header animate-fade-in">
+        
+        <nav class="navbar">
+            
+            <!-- Botón Hamburguesa (Solo visible en móviles) -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Logo (Centrado en desktop) -->
+            <div class="nav-logo">
+                <a href="#">TechCare<span class="gold-dot">.</span></a>
+            </div>
+
+            <!-- Opciones del Menú (A la derecha en desktop) -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="nav-link active">Inicio</a></li>
+                <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+                <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+                <li><a href="Contactanos.html" class="nav-link">Contáctanos</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main class="hero-content animate-fade-in">
+        <h1>Mantenimiento de <span class="text-gold">Equipos</span> de Cómputo</h1>
+        <p>Conoce cómo cuidar el hadware y software de una computadora</p>
+    </main <section class="services-section animate-fade-in">
+    <div class="container">
+        
+        <section class="essense-section" id="nosotros">
+    <div class="essense-container">
+        
+        <p class="essense-lead">
+            Nuestra función principal es solucionar averías técnicas y prevenir fallos operativos para asegurar que tus equipos trabajen siempre a la máxima velocidad y estabilidad. cumplimos este objetivo a través de cuatro pilares clave:
+        </p>
+        
+        <div class="essense-grid">
+            
+            <div class="essense-card">
+                <span class="card-number">01</span>
+                <h3 class="card-pilar-title">hardware</h3>
+                <p class="card-pilar-text">Garantizar la integridad física de tus equipos mediante reparaciones y componentes de alta gama.</p>
+            </div>
+
+            <div class="essense-card">
+                <span class="card-number">02</span>
+                <h3 class="card-pilar-title">software</h3>
+                <p class="card-pilar-text">Maximizar el rendimiento del sistema operativo para una experiencia de usuario impecable.</p>
+            </div>
+
+            <div class="essense-card">
+                <span class="card-number">03</span>
+                <h3 class="card-pilar-title">antivirus</h3>
+                <p class="card-pilar-text">blindar tu seguridad digital erradicando amenazas y protegiendo tu información.</p>
+            </div>
+
+            <div class="essense-card">
+                <span class="card-number">04</span>
+                <h3 class="card-pilar-title">redes</h3>
+                <p class="card-pilar-text">Asegurar una conectividad fluida y estable sin caídas de internet.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+</section>
+          
+    </div>
+</section>
+
+<div id="hardware" style="padding-top: 100px;"></div>
+<div id="software" style="padding-top: 100px;"></div>
+<div id="antivirus" style="padding-top: 100px;"></div>
+<div id="redes" style="padding-top: 100px;"></div>>
+
+    <!-- Pequeño script para asegurar la responsividad completa -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Cambia el icono de barras a una 'X' cuando esté abierto
+            const icon = hamburgerBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+
+    <!-- Pie de Página Premium -->
+
+</body>
+<footer class="footer-section animate-fade-in">
+    <div class="footer-container">
+        
+        <!-- Contenedor del Logo / Créditos -->
+        <div class="footer-brand">
+            <a href="#" class="footer-logo">TechCare<span class="gold-dot">.</span></a>
+            <p class="footer-credits">&copy; 2026 Todos los derechos reservados.</p>
+        </div>
+
+        <!-- Iconos de Redes Sociales -->
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com" target="_blank" class="social-link" aria-label="X (Twitter)">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+
+        <!-- Botón para Volver Arriba (Enlace interno al inicio de la página) -->
+        <div class="footer-back-to-top">
+            <a href="#" class="scroll-top-btn" aria-label="Volver arriba">
+                <span class="btn-text">Volver arriba</span>
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+</html>

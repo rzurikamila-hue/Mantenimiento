@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="contactanos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>contáctanos | techcare</title>
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <header class="header animate-fade-in">
+        <nav class="navbar">
+            
+            <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-logo">
+                <a href="#">TechCare<span class="gold-dot">.</span></a>
+            </div>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+                <li><a href="#contacto-seccion" class="nav-link active">Contáctanos</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <section class="contact-section animate-fade-in" id="contacto-seccion">
+        <div class="contact-container">
+            
+            <div class="contact-info">
+                <span class="contact-subtitle">canales oficiales</span>
+                <h2 class="contact-title">atención técnica <br> de nivel <span class="text-gold font-light">superior</span></h2>
+                <div class="contact-line"></div>
+                
+                <p class="contact-lead">
+                    si requiere asistencia inmediata, soporte de emergencia o una cotización personalizada para el mantenimiento de su infraestructura, póngase en contacto a través de cualquiera de nuestras líneas exclusivas.
+                </p>
+
+                <div class="info-channels">
+                    <div class="channel-item">
+                        <div class="channel-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="channel-details">
+                            <h3>correo electrónico</h3>
+                            <p>soporte@techcare.com</p>
+                        </div>
+                    </div>
+
+                    <div class="channel-item">
+                        <div class="channel-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="channel-details">
+                            <h3>línea de atención</h3>
+                            <p>+52 (238) 123 4567</p>
+                        </div>
+                    </div>
+
+                    <div class="channel-item">
+                        <div class="channel-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="channel-details">
+                            <h3>horario técnico</h3>
+                            <p>lunes a viernes — 09:00 a 18:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-box">
+                <form action="#" method="POST" class="contact-form">
+                    
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" class="form-input" placeholder="ej. carlos mendoza" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">dirección de correo</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="ej. carlos@dominio.com" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="asunto" class="form-label">tipo de servicio solicitado</label>
+                        <select id="asunto" name="asunto" class="form-input select-custom" required>
+                            <option value="" disabled selected hidden>seleccione una opción...</option>
+                            <option value="hardware">mantenimiento y reparación de hardware</option>
+                            <option value="software">optimización y limpieza de software</option>
+                            <option value="antivirus">seguridad digital y antivirus</option>
+                            <option value="redes">optimización de señal y redes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje" class="form-label">descripción del requerimiento</label>
+                        <textarea id="mensaje" name="mensaje" class="form-input form-textarea" placeholder="describa detalladamente la situación o fallo de su equipo..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <span>enviar solicitud</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
